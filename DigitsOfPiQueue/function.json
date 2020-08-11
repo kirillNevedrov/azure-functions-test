@@ -1,0 +1,14 @@
+{
+  "bindings": [
+    {
+      "name": "msg",
+      "type": "queueTrigger",
+      "dataType": "string",
+      "direction": "in",
+      "queueName": "macro-scan-cv",
+      "connection": "AzureWebJobsStorage"
+    }
+  ],
+  "disabled": false,
+  "scriptFile": "__init__.py"
+}

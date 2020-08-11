@@ -1,0 +1,17 @@
+{
+  "version": "2.0",
+  "extensions": {
+    "queues": {
+      "batchSize": 1,
+      "newBatchThreshold": 0
+    },
+    "durableTask": {
+      "maxConcurrentActivityFunctions": 1,
+      "extendedSessionsEnabled": true
+    }
+  },
+  "extensionBundle": {
+    "id": "Microsoft.Azure.Functions.ExtensionBundle",
+    "version": "[1.*, 2.0.0)"
+  }
+}

@@ -6,7 +6,7 @@
       "type": "queueTrigger",
       "dataType": "string",
       "direction": "in",
-      "queueName": "test-fan-in-fan-out",
+      "queueName": "test-fan-in-fan-out-1",
       "connection": "AzureWebJobsStorage"
     },
     {

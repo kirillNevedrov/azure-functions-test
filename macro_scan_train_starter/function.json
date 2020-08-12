@@ -6,7 +6,7 @@
       "type": "queueTrigger",
       "dataType": "string",
       "direction": "in",
-      "queueName": "macro-scan-train",
+      "queueName": "macro-scan-train-1",
       "connection": "AzureWebJobsStorage"
     },
     {

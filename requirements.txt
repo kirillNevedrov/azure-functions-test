@@ -1,4 +1,4 @@
 azure-functions
-azure-functions-durable>=1.0.0b6
+azure-functions-durable>=1.0.0b7
 azure-eventgrid
 azure-storage-queue==12.1.2

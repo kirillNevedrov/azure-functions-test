@@ -21,24 +21,22 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 
         msg_body = context.get_input()
 
-        try:
-            parallel_tasks = []
-            for chunk_id in msg_body['chunks_ids']:
-                parallel_tasks.append(context.call_activity(
-                    'macro_scan_train_activity',
-                    {
-                        'id': chunk_id
-                    }
-                ))
+        parallel_tasks = []
+        for chunk_id in msg_body['chunks_ids']:
+            parallel_tasks.append(context.call_activity(
+                'macro_scan_train_activity',
+                {
+                    'id': chunk_id
+                }
+            ))
 
-            outputs = yield context.task_all(parallel_tasks)
-        except Exception as ex:
-            raise
-        else:
-            logging.info(
-                "macro_scan_train_orchestrator succeed")
+        outputs = yield context.task_all(parallel_tasks)
 
-            # logging.info('macro_scan_train_orchestrator succeed')
+        test = yield context.call_activity("macro_scan_train_activity_2", outputs)
+
+        return test
+
+        # logging.info('macro_scan_train_orchestrator succeed')
     except Exception as ex:
         logging.exception(
             "macro_scan_train_orchestrator failed", exc_info=ex)

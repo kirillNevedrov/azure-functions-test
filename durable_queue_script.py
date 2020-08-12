@@ -18,7 +18,7 @@ def run():
         pass
 
     queue_client.send_message(json.dumps({
-        'chunks_ids': [str(uuid.uuid1()) for i in range(0, 300)]
+        'chunks_ids': [str(uuid.uuid1()) for i in range(0, 30)]
     }))
 
     test = 1

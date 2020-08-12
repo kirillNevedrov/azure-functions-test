@@ -6,25 +6,21 @@
 # - add azure-functions-durable to requirements.txt
 # - run pip install -r requirements.txt
 
-import os
 import logging
-import pickle
-import json
 import azure.functions as func
 import azure.durable_functions as df
 
 
 def orchestrator_function(context: df.DurableOrchestrationContext):
     try:
-        logging.info(
-            "macro_scan_train_orchestrator started")
+        logging.info("test_orchestrator started")
 
         msg_body = context.get_input()
 
         parallel_tasks = []
         for chunk_id in msg_body['chunks_ids']:
             parallel_tasks.append(context.call_activity(
-                'macro_scan_train_activity',
+                'test_fan_out_activity',
                 {
                     'id': chunk_id
                 }
@@ -32,14 +28,13 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 
         outputs = yield context.task_all(parallel_tasks)
 
-        test = yield context.call_activity("macro_scan_train_activity_2", outputs)
+        yield context.call_activity("test_fan_in_activity", outputs)
 
-        return test
-
-        # logging.info('macro_scan_train_orchestrator succeed')
+        logging.info(
+            "test_orchestrator succeed")
     except Exception as ex:
         logging.exception(
-            "macro_scan_train_orchestrator failed", exc_info=ex)
+            "test_orchestrator failed", exc_info=ex)
 
         raise
 

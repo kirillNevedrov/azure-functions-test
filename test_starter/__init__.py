@@ -5,7 +5,6 @@
 # - add azure-functions-durable to requirements.txt
 # - run pip install -r requirements.txt
 
-import logging
 import json
 import azure.functions as func
 import azure.durable_functions as df
@@ -16,4 +15,4 @@ async def main(msg: func.QueueMessage, starter: str) -> None:
     msg_body = json.loads(msg_body)
 
     client = df.DurableOrchestrationClient(starter)
-    await client.start_new('macro_scan_train_orchestrator', None, msg_body)
+    await client.start_new('test_orchestrator', None, msg_body)

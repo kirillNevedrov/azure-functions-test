@@ -6,23 +6,18 @@
 # - add azure-functions-durable to requirements.txt
 # - run pip install -r requirements.txt
 
-import os
 import logging
-import json
-# import time
-from typing import Any
-from azure.core.exceptions import ResourceExistsError
 
 
 def main(msg):
     try:
-        logging.info(
-            "macro_scan_train_orchestrator succeed")
+        total_count = len(msg)
 
-        return 'test'
+        logging.info(f"test_fan_in_activity total_count: {total_count}")
 
+        return total_count
     except Exception as ex:
         logging.exception(
-            "macro_scan_train_activity_2 failed", exc_info=ex)
+            "test_fan_in_activity failed", exc_info=ex)
 
         raise

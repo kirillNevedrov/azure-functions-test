@@ -1,14 +1,18 @@
 {
+  "scriptFile": "__init__.py",
   "bindings": [
     {
       "name": "msg",
       "type": "queueTrigger",
       "dataType": "string",
       "direction": "in",
-      "queueName": "macro-scan-cv",
+      "queueName": "test-fan-in-fan-out",
       "connection": "AzureWebJobsStorage"
+    },
+    {
+      "name": "starter",
+      "type": "orchestrationClient",
+      "direction": "in"
     }
-  ],
-  "disabled": false,
-  "scriptFile": "__init__.py"
+  ]
 }

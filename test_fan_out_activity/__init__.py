@@ -6,12 +6,7 @@
 # - add azure-functions-durable to requirements.txt
 # - run pip install -r requirements.txt
 
-import os
 import logging
-import json
-# import time
-from typing import Any
-from azure.core.exceptions import ResourceExistsError
 
 
 def pi_digits_Python(digits):
@@ -45,6 +40,6 @@ def main(msg):
         }
     except Exception as ex:
         logging.exception(
-            "macro_scan_train_activity failed", exc_info=ex)
+            "test_fan_out_activity failed", exc_info=ex)
 
         raise
